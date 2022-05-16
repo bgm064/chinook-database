@@ -42,4 +42,12 @@ public class AlbumServlet extends HttpServlet {
 		albumDao.addAlbum(newAlbum);	
 		resp.sendRedirect("/albums?ArtistId=" + artistId);	
 	}
+	
+	@Override
+	protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		long id = Long.parseLong(req.getParameter("id"));
+		
+		albumDao.removeAlbum(id);
+	}
+	
 }

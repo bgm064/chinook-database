@@ -14,11 +14,14 @@ button {
 </style>
 </head>
 <body>
-	<h1>Albums: <c:out value="${ artist.getArtistName() }"></c:out></h1>
+	<h1>
+		Albums by
+		<c:out value="${ artist.getArtistName() }"></c:out>
+	</h1>
 
 	<form method="POST">
-		<input name="title" type="text" required
-			placeholder="type album here..." autofocus /> <input type="submit"
+		<input name="name" type="text" required
+			placeholder="type artist here..." autofocus /> <input type="submit"
 			value="Add to database" />
 	</form>
 
