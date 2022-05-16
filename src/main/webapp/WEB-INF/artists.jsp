@@ -24,7 +24,9 @@ button {
 
 	<ol>
 		<c:forEach items="${ items }" var="artist">
-			<li id="product-${ artist.getArtistId() }"><c:out value="${ artist.getArtistName() }"></c:out>
+			<li id="product-${ artist.getArtistId() }"><a
+				href="/albums?ArtistId=${ artist.getArtistId() }"><c:out
+						value="${ artist.getArtistName() }"></c:out></a>
 				<button onclick="removeItem(${ artist.getArtistId() })">Remove</button></li>
 		</c:forEach>
 	</ol>
