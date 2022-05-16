@@ -115,11 +115,11 @@ public class JDBCArtistDao implements ArtistDao {
 			for (Artist listItem : items) {
 				if (artist.getArtistId() == listItem.getArtistId()) {
 					statement.setLong(1, listItem.getArtistId());
-					
+
 					if (statement.executeUpdate() > 0) {
 						return true;
 					}
-					
+
 				}
 			}
 

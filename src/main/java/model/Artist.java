@@ -1,7 +1,6 @@
 package model;
 
 public class Artist {
-
 	private long artistId;
 	private String artistName;
 	
@@ -9,8 +8,8 @@ public class Artist {
 		this.artistName = name;
 	}
 	
-	public Artist(long id, String name) {
-		this.artistId = id;
+	public Artist(long artist, String name) {
+		this.artistId = artist;
 		this.artistName = name;
 	}
 	
@@ -22,8 +21,8 @@ public class Artist {
 		return this.artistName;
 	}
 	
-	public void setArtistId(long id) {
-		this.artistId = id;
+	public void setArtistId(long artist) {
+		this.artistId = artist;
 	}
 	
 }

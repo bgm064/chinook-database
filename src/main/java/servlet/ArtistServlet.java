@@ -14,9 +14,8 @@ import database.JDBCArtistDao;
 import model.Artist;
 
 @SuppressWarnings("serial")
-@WebServlet("/list")
+@WebServlet("/artists")
 public class ArtistServlet extends HttpServlet {
-
 	private ArtistDao dao = new JDBCArtistDao();
 	
 	@Override
@@ -32,7 +31,7 @@ public class ArtistServlet extends HttpServlet {
 		Artist newArtist = new Artist(req.getParameter("name"));
 
 		dao.addArtist(newArtist);
-		resp.sendRedirect("/list");
+		resp.sendRedirect("/artists");
 	}
 	
 	@Override
