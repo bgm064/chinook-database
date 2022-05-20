@@ -19,6 +19,7 @@ import model.Artist;
 @WebServlet("/artists")
 public class ArtistServlet extends HttpServlet {
 	private ArtistDao artistDao = new JDBCArtistDao();
+	private AlbumDao albumDao = new JDBCAlbumDao();
 	
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,6 +43,7 @@ public class ArtistServlet extends HttpServlet {
 		Artist artist = artistDao.getArtist(id);
 		
 		artistDao.removeArtist(artist);
+		albumDao.removeAlbum(artist.getArtistId());
 	}
 	
 }

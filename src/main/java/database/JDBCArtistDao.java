@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -75,7 +76,7 @@ public class JDBCArtistDao implements ArtistDao {
 
 			connection = db.connect();
 			statement = connection.prepareStatement("INSERT INTO Artist (Name) VALUES (?)",
-					statement.RETURN_GENERATED_KEYS);
+					Statement.RETURN_GENERATED_KEYS);
 			statement.setString(1, newArtist.getArtistName());
 			int count = statement.executeUpdate();
 
