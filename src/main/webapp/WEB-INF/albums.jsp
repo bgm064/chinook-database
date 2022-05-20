@@ -22,7 +22,8 @@ button {
 	<form method="POST">
 		<input name="name" type="text" required
 			placeholder="type artist here..." autofocus /> <input type="submit"
-			value="Add to database" />
+			value="Add to database" /> <input type="button" value="Back"
+			onclick="history.back()">
 	</form>
 
 	<ol>
