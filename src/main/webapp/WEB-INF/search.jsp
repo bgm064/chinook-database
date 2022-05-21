@@ -3,15 +3,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Artists | 🎤 | Music Library</title>
+<title>Search | 🔍 | Music Library</title>
 <link rel="stylesheet"
 	href="https://unpkg.com/sakura.css/css/sakura-dark.css" type="text/css">
 <style>
-#remove_button, #home_button, #search_form {
+#remove_button, #back_button, #search_form {
 	float: right;
 }
 
-#search_button:hover, #add_button:hover, #home_button:hover {
+#search_button:hover, #add_button:hover, #back_button:hover {
 	color: #C9C9C9;
 	background-color: #735BC1;
 	border: 1px solid #735BC1;
@@ -24,14 +24,13 @@
 			autofocus /> <input id="search_button" type="submit" value="Search" />
 	</form>
 
-	<h1>Artists</h1>
+	<h1>
+		Results of
+		<c:out value="'${ keyword }'"></c:out>
+	</h1>
 
-	<form method="POST">
-		<input name="name" type="text" required placeholder="type here..."
-			autofocus /> <input id="add_button" type="submit"
-			value="Add to database" /> <input id="home_button" type="button"
-			value="Home" onclick="window.location.href='/';">
-	</form>
+	<input id="back_button" type="button" value="Back"
+		onclick="window.location.href='/artists';">
 	<table>
 		<thead>
 			<tr>

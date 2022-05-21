@@ -9,5 +9,7 @@ public interface AlbumDao {
 	public boolean addAlbum(Album newAlbum);
 
 	public boolean removeAlbum(long id);
+	
+	public int getCount();
 
 }

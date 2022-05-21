@@ -15,8 +15,6 @@ public class JDBCArtistDao implements ArtistDao {
 
 	@Override
 	public List<Artist> getAllItems() {
-		String selectAll = "SELECT ArtistId, Name FROM Artist ORDER BY Name ASC;";
-
 		Connection connection = null;
 		PreparedStatement statement = null;
 		ResultSet results = null;
@@ -25,7 +23,8 @@ public class JDBCArtistDao implements ArtistDao {
 
 		try {
 			connection = db.connect();
-			statement = connection.prepareStatement(selectAll);
+			statement = connection
+					.prepareStatement("SELECT ArtistId, Name FROM Artist ORDER BY Name COLLATE NOCASE ASC;");
 			results = statement.executeQuery();
 
 			while (results.next()) {
@@ -109,7 +108,6 @@ public class JDBCArtistDao implements ArtistDao {
 		List<Artist> items = getAllItems();
 
 		try {
-
 			connection = db.connect();
 			statement = connection.prepareStatement("DELETE FROM Artist WHERE ArtistId = ?");
 
@@ -131,6 +129,61 @@ public class JDBCArtistDao implements ArtistDao {
 		}
 
 		return false;
+	}
+
+	@Override
+	public List<Artist> searchArtist(String keyword) {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet results = null;
+
+		List<Artist> items = new ArrayList<Artist>();
+
+		try {
+			connection = db.connect();
+			statement = connection.prepareStatement(
+					"SELECT ArtistId, Name FROM Artist WHERE Name LIKE ? ORDER BY Name COLLATE NOCASE ASC");
+
+			statement.setString(1, "%" + keyword + "%");
+			results = statement.executeQuery();
+
+			while (results.next()) {
+				long artistId = results.getLong("ArtistId");
+				String artistName = results.getString("Name");
+				Artist newArtist = new Artist(artistId, artistName);
+				items.add(newArtist);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(results, statement, connection);
+		}
+
+		return items;
+	}
+
+	@Override
+	public int getCount() {
+		Connection connection = null;
+		PreparedStatement statement = null;
+		ResultSet results = null;
+
+		int count = 0;
+
+		try {
+			connection = db.connect();
+			statement = connection.prepareStatement("SELECT COUNT(ArtistId) AS ArtistCount FROM Artist");
+			results = statement.executeQuery();
+
+			count = results.getInt("ArtistCount");
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			db.close(results, statement, connection);
+		}
+		return count;
 	}
 
 }

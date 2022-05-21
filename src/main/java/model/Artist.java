@@ -12,7 +12,7 @@ public class Artist {
 		this.artistId = artist;
 		this.artistName = name;
 	}
-	
+
 	public long getArtistId() {
 		return this.artistId;
 	}

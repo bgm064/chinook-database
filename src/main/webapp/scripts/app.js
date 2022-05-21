@@ -19,7 +19,7 @@ async function removeFromServer(itemId) {
 }
 
 function removeFromPage(itemId) {
-	let elementId = `product-${itemId}`;
+	let elementId = `item-${itemId}`;
 	let element = document.getElementById(elementId);
 
 	if (element !== null) {

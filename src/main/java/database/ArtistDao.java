@@ -11,5 +11,9 @@ public interface ArtistDao {
 	public boolean addArtist(Artist newArtist);
 
 	public boolean removeArtist(Artist artist);
+	
+	public List<Artist> searchArtist(String keyword);
+	
+	public int getCount();
 
 }
